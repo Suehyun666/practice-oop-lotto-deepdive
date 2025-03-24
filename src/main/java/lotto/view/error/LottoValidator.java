@@ -8,6 +8,10 @@ import static lotto.constants.LottoConstants.*;
 
 public class LottoValidator {
 
+    private LottoValidator() {
+        throw new AssertionError("유틸리티 클래스는 인스턴스화할 수 없습니다.");
+    }
+
     public static List<Integer> validate(String input) {
         List<Integer> numbers = validateNumber(input);
         validateSize(numbers);

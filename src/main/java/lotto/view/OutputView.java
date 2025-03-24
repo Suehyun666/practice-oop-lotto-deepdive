@@ -3,16 +3,16 @@ package lotto.view;
 import lotto.control.LottoResult;
 import lotto.constants.LottoRank;
 import lotto.control.Sorter;
-import lotto.model.LottoTicket;
+import lotto.model.Lotto;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
-    public void printLottoTickets(List<LottoTicket> tickets, int count) {
+    public void printLottoTickets(List<Lotto> tickets, int count) {
         System.out.println("\n" + count + "개를 구매했습니다.");
-        List<LottoTicket> sortedTickets = Sorter.sort(tickets);
-        for (LottoTicket ticket : sortedTickets) {
+        List<Lotto> sortedTickets = Sorter.sort(tickets);
+        for (Lotto ticket : sortedTickets) {
             System.out.println(ticket.getNumbers());
         }
     }

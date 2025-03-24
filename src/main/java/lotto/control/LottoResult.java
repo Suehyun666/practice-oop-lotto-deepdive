@@ -44,8 +44,4 @@ public class LottoResult {
         return (double) calculateTotalPrize() / purchaseAmount * 100;
     }
 
-    public Map<LottoRank, Integer> getRankCounts() {
-        return new EnumMap<>(rankCounts);
-    }
-
 }
