@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Sorter {
-    // 정적 메서드로 변경
+
+    private Sorter(){
+        throw new AssertionError("유틸리티 클래스는 인스턴스화할 수 없습니다.");
+    }
+
     public static List<Lotto> sort(List<Lotto> tickets) {
         return tickets.stream()
                 .map(ticket -> {

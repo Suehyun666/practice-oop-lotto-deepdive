@@ -31,7 +31,6 @@ public class GameManager {
         }catch(Exception e){
             System.out.println(e);
         }
-
     }
 
     private int getAmount(){

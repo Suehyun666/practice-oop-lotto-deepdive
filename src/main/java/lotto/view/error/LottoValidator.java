@@ -20,18 +20,30 @@ public class LottoValidator {
         return numbers;
     }
 
-    public static int validateBonusNumber(List<Integer> winningnumbers, String input) {
+    public static int validateBonusNumber(List<Integer> winningNumbers, String input) {
+        int number = parseToInt(input, "[ERROR] 보너스 번호는 숫자여야 합니다.");
+        validateBonusNumberRange(number);
+        validateBonusNumberDuplicate(winningNumbers, number);
+        return number;
+    }
+
+    private static int parseToInt(String input, String errorMessage) {
         try {
-            int number = Integer.parseInt(input);
-            if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
-                throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
-            if (winningnumbers.contains(number)) {
-                throw new IllegalArgumentException("[ERROR] 보너스 번호는 중복되면 안됩니다.");
-            }
-            return number;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+            throw new IllegalArgumentException(errorMessage);
+        }
+    }
+
+    private static void validateBonusNumberRange(int number) {
+        if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    private static void validateBonusNumberDuplicate(List<Integer> winningNumbers, int number) {
+        if (winningNumbers.contains(number)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 중복되면 안됩니다.");
         }
     }
 

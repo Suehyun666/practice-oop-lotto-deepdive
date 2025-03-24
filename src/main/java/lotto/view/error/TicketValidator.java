@@ -3,6 +3,10 @@ package lotto.view.error;
 public class TicketValidator {
     private static final int LOTTO_PRICE = 1000;
 
+    private TicketValidator() {
+        throw new AssertionError("유틸리티 클래스는 인스턴스화할 수 없습니다.");
+    }
+
     public static int validate(String input) {
         try {
             int price = Integer.parseInt(input);

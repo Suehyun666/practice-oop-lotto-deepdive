@@ -12,14 +12,6 @@ public class LottoResult {
         initializeRankCounts();
     }
 
-    private void initializeRankCounts() {
-        for (LottoRank rank : LottoRank.values()) {
-            if (rank != LottoRank.NONE) {
-                rankCounts.put(rank, 0);
-            }
-        }
-    }
-
     public void addRank(LottoRank rank) {
         if (rank == LottoRank.NONE) {
             return;
@@ -42,6 +34,14 @@ public class LottoResult {
             return 0.0;
         }
         return (double) calculateTotalPrize() / purchaseAmount * 100;
+    }
+
+    private void initializeRankCounts() {
+        for (LottoRank rank : LottoRank.values()) {
+            if (rank != LottoRank.NONE) {
+                rankCounts.put(rank, 0);
+            }
+        }
     }
 
 }
