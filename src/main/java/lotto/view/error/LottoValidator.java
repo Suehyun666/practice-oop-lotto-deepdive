@@ -20,6 +20,13 @@ public class LottoValidator {
         return numbers;
     }
 
+    public static List<Integer> validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateNumberRange(numbers);
+        validateDuplicate(numbers);
+        return numbers;
+    }
+
     public static int validateBonusNumber(List<Integer> winningNumbers, String input) {
         int number = parseToInt(input, "[ERROR] 보너스 번호는 숫자여야 합니다.");
         validateBonusNumberRange(number);
