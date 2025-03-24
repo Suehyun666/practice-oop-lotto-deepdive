@@ -3,7 +3,7 @@ package lotto.view.error;
 public class TicketValidator {
     private static final int LOTTO_PRICE = 1000;
 
-    public static int validateTicketAmount(String input) {
+    public static int validate(String input) {
         try {
             int price = Integer.parseInt(input);
             if (price < LOTTO_PRICE) {

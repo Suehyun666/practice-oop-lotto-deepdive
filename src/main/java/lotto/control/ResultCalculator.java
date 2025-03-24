@@ -6,7 +6,7 @@ import lotto.model.LottoTicket;
 
 import java.util.List;
 
-public class ResultCaculator {
+public class ResultCalculator {
 
     public static LottoResult calculate(List<LottoTicket> tickets, List<Integer> winningNumbers, int bonusNumber) {
         Lotto winningLotto = new Lotto(winningNumbers);

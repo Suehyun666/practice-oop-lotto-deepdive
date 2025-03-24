@@ -4,13 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LottoValidator {
-    private static final int LOTTO_SIZE = 6;
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int MAX_LOTTO_NUMBER = 45;
-    private static final String COMMA = ",";
+import static lotto.constants.LottoConstants.*;
 
-    public static List<Integer> validateLottoNumbers(String input) {
+public class LottoValidator {
+
+    public static List<Integer> validate(String input) {
         List<Integer> numbers = validateNumber(input);
         validateSize(numbers);
         validateNumberRange(numbers);
@@ -18,11 +16,14 @@ public class LottoValidator {
         return numbers;
     }
 
-    public static int validateBonusNumber(String input) {
+    public static int validateBonusNumber(List<Integer> winningnumbers, String input) {
         try {
             int number = Integer.parseInt(input);
             if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
                 throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+            if (winningnumbers.contains(number)) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 중복되면 안됩니다.");
             }
             return number;
         } catch (NumberFormatException e) {
