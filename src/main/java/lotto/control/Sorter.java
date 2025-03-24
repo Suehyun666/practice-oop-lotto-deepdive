@@ -1,20 +1,21 @@
 package lotto.control;
 
-import lotto.constants.LottoRank;
 import lotto.model.LottoTicket;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Sorter {
-    public Sorter(){
-
-    }
-    public List<LottoTicket> sort(List<LottoTicket> result) {
-        //로또 번호를 오름차순으로 정렬
-
-
-        return new ArrayList<>();
+    // 정적 메서드로 변경
+    public static List<LottoTicket> sort(List<LottoTicket> tickets) {
+        return tickets.stream()
+                .map(ticket -> {
+                    List<Integer> sortedNumbers = new ArrayList<>(ticket.getNumbers());
+                    Collections.sort(sortedNumbers);
+                    return new LottoTicket(sortedNumbers);
+                })
+                .collect(Collectors.toList());
     }
 }

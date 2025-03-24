@@ -1,18 +1,25 @@
 package lotto.control;
 
+import lotto.constants.LottoRank;
+import lotto.model.Lotto;
+import lotto.model.LottoTicket;
+
+import java.util.List;
+
 public class ResultCaculator {
 
-    public ResultCaculator() {
+    public static LottoResult calculate(List<LottoTicket> tickets, List<Integer> winningNumbers, int bonusNumber) {
+        Lotto winningLotto = new Lotto(winningNumbers);
+        LottoResult result = new LottoResult();
 
-    }
+        for (LottoTicket ticket : tickets) {
+            int matchCount = ticket.matchCount(winningLotto);
+            boolean bonusMatch = ticket.contains(bonusNumber);
 
-    public LottoResult caculate() {
-        //lotto 연산 - 메서드 분리
+            LottoRank rank = LottoRank.of(matchCount, bonusMatch);
+            result.addRank(rank);
+        }
 
-        //lotto bonus - 메서드 분리
-
-        //lotto 전체 연산
-
-        return new LottoResult();
+        return result;
     }
 }

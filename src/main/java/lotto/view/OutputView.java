@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.control.LottoResult;
 import lotto.constants.LottoRank;
+import lotto.control.Sorter;
 import lotto.model.LottoTicket;
 
 import java.text.DecimalFormat;
@@ -10,7 +11,8 @@ import java.util.List;
 public class OutputView {
     public void printLottoTickets(List<LottoTicket> tickets, int count) {
         System.out.println("\n" + count + "개를 구매했습니다.");
-        for (LottoTicket ticket : tickets) {
+        List<LottoTicket> sortedTickets = Sorter.sort(tickets);
+        for (LottoTicket ticket : sortedTickets) {
             System.out.println(ticket.getNumbers());
         }
     }
@@ -50,4 +52,5 @@ public class OutputView {
         DecimalFormat formatter = new DecimalFormat("0.0");
         return formatter.format(rate);
     }
+
 }
