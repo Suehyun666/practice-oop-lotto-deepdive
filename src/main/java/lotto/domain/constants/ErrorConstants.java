@@ -1,6 +1,7 @@
 package lotto.domain.constants;
 
 public class ErrorConstants {
+    public static final String ERROR = "[ERROR] ";
     public static final String INSTANCE_ERROR = "유틸리티 클래스는 인스턴스화할 수 없습니다.";
 
     public static final String BONUS_TYPE_ERROR = "보너스 번호는 숫자여야 합니다.";

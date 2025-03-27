@@ -6,6 +6,8 @@ import lotto.validate.TicketValidator;
 
 import java.util.List;
 
+import static lotto.domain.constants.InputConstants.*;
+
 public class ConsoleInputView implements InputView {
     @Override
     public int readAmount() {

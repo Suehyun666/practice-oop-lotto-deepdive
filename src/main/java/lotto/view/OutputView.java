@@ -9,4 +9,5 @@ public interface OutputView {
     void printLottoTickets(List<Lotto> tickets, int count);
     void printResult(LottoResult result);
     void printProfit(double returnRate);
+    void printError(String message);
 }

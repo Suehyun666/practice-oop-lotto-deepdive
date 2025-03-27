@@ -7,6 +7,9 @@ import lotto.domain.LottoResult;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static lotto.domain.constants.ErrorConstants.ERROR;
+import static lotto.domain.constants.OutPutConstants.*;
+
 public class ConsoleOutputView implements OutputView {
 
     @Override
@@ -30,6 +33,11 @@ public class ConsoleOutputView implements OutputView {
     @Override
     public void printProfit(double returnRate) {
         System.out.println(PROFIT_MESSAGE_1 + formatRate(returnRate) + PROFIT_MESSAGE_2);
+    }
+
+    @Override
+    public void printError(String message) {
+        System.out.println(ERROR+message);
     }
 
     private void printRankCount(LottoResult result, LottoRank rank) {

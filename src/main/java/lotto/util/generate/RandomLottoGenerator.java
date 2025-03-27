@@ -6,6 +6,8 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.domain.constants.LottoConstants.*;
+
 public class RandomLottoGenerator implements LottoGenerator {
     @Override
     public List<Lotto> generate(int count) {
