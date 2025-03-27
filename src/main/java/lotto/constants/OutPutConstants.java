@@ -2,7 +2,7 @@ package lotto.constants;
 
 public class OutPutConstants {
     public static final String OUTPUT_STATIC_START = "\"\\n당첨 통계\\n---\"";
-    public static final String LOTTO_COUNT_MESSAGE2 = "개 일치";
+    public static final String LOTTO_COUNT_MESSAGE2 = "개를 구매했습니다.";
     public static final String LOTTO_COUNT_MESSAGE1 = "\n";
     public static final String PROFIT_MESSAGE_1 = "총 수익률은 ";
     public static final String PROFIT_MESSAGE_2 = "%입니다.";
