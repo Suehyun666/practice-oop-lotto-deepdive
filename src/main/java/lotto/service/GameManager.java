@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.util.LottoStatisticsCalculator;
 import lotto.util.ResultCalculator;
 import lotto.model.Lotto;
 import lotto.view.InputView;
@@ -34,7 +35,10 @@ public class GameManager {
         int bonusNumber = inputView.readBonusNumber(winningNumbers);
 
         LottoResult result = ResultCalculator.calculate(tickets, winningNumbers, bonusNumber);
-        outputView.printResult(result, price);
+        outputView.printResult(result);
+
+        double returnRate = LottoStatisticsCalculator.calculateReturnRate(result, price);
+        outputView.printProfit(returnRate);
     }
 
 }

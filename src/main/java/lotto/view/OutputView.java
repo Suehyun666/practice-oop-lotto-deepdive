@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.model.LottoResult;
 import lotto.constants.LottoRank;
 import lotto.model.Lotto;
+import lotto.util.LottoStatisticsCalculator;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -17,15 +18,16 @@ public class OutputView {
         }
     }
 
-    public void printResult(LottoResult result, int amount) {
+    public void printResult(LottoResult result) {
         System.out.println(OUTPUT_STATIC_START);
         printRankCount(result, LottoRank.FIFTH);
         printRankCount(result, LottoRank.FOURTH);
         printRankCount(result, LottoRank.THIRD);
         printRankCount(result, LottoRank.SECOND);
         printRankCount(result, LottoRank.FIRST);
+    }
 
-        double returnRate = result.calculateReturnRate(amount);
+    public void printProfit(double returnRate) {
         System.out.println(PROFIT_MESSAGE_1 + formatRate(returnRate) + PROFIT_MESSAGE_2);
     }
 

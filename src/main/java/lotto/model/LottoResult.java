@@ -23,19 +23,6 @@ public class LottoResult {
         return rankCounts.getOrDefault(rank, 0);
     }
 
-    public long calculateTotalPrize() {
-        return rankCounts.entrySet().stream()
-                .mapToLong(entry -> (long) entry.getKey().getPrize() * entry.getValue())
-                .sum();
-    }
-
-    public double calculateReturnRate(int purchaseAmount) {
-        if (purchaseAmount == 0) {
-            return 0.0;
-        }
-        return (double) calculateTotalPrize() / purchaseAmount * 100;
-    }
-
     private void initializeRankCounts() {
         for (LottoRank rank : LottoRank.values()) {
             if (rank != LottoRank.NONE) {
