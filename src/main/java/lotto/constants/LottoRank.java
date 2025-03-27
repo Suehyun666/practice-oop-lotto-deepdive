@@ -1,7 +1,5 @@
 package lotto.constants;
 
-import java.util.Arrays;
-
 public enum LottoRank {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
@@ -20,17 +18,6 @@ public enum LottoRank {
         this.prize = prize;
     }
 
-    public static LottoRank of(int matchCount, boolean bonusMatch) {
-        if (matchCount == 5 && bonusMatch) {
-            return SECOND;
-        }
-
-        return Arrays.stream(values())
-                .filter(rank -> rank.matchCount == matchCount && !rank.bonusMatch)
-                .findFirst()
-                .orElse(NONE);
-    }
-
     public int getMatchCount() {
         return matchCount;
     }
@@ -38,5 +25,7 @@ public enum LottoRank {
     public int getPrize() {
         return prize;
     }
+
+    public boolean isBonusMatch() {return bonusMatch;};
 
 }

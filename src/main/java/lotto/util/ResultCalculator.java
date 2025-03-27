@@ -15,8 +15,7 @@ public class ResultCalculator {
         for (Lotto ticket : tickets) {
             int matchCount = ticket.matchCount(winningLotto);
             boolean bonusMatch = ticket.contains(bonusNumber);
-
-            LottoRank rank = LottoRank.of(matchCount, bonusMatch);
+            LottoRank rank = RankDeterminer.determineRank(matchCount, bonusMatch);
             result.addRank(rank);
         }
 
