@@ -1,13 +1,22 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.controller.GameController;
+import lotto.service.LottoService;
+import lotto.service.ResultService;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.domain.constants.ErrorConstants.PRICE_UNIT_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -57,5 +66,16 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void processGame_WithInvalidInput_ShouldThrowException() {
+        InputView mockInputView = mock(InputView.class);
+        when(mockInputView.readAmount()).thenThrow(new IllegalArgumentException(PRICE_UNIT_ERROR));
+
+        GameController gameController = new GameController(
+                mockInputView, mock(OutputView.class), mock(LottoService.class), mock(ResultService.class));
+
+        assertThrows(IllegalArgumentException.class, () -> gameController.processGame());
     }
 }

@@ -29,6 +29,18 @@ public class GameController {
     }
 
     public void startGame() {
+        try {
+            processGame();
+        } catch (IllegalArgumentException e) {
+            outputView.printError(e.getMessage());
+            startGame(); // 재시도
+        } catch (Exception e) {
+            outputView.printError("예상치 못한 오류가 발생했습니다: " + e.getMessage());
+        }
+    }
+
+    // 테스트 가능한 핵심 로직 - 예외를 던짐
+    public void processGame() {
         // 1. 로또 구매
         int price = inputView.readAmount();
         int count = price / LOTTO_PRICE;
@@ -39,11 +51,10 @@ public class GameController {
         List<Integer> winningNumbers = inputView.readWinningNumbers();
         int bonusNumber = inputView.readBonusNumber(winningNumbers);
 
-        // 3. 결과 계산
+        // 3. 결과 계산 및 출력
         LottoResult result = lottoService.calculateResult(tickets, winningNumbers, bonusNumber);
         double returnRate = resultService.calculateReturnRate(result, price);
 
-        // 4. 결과 출력
         outputView.printResult(result);
         outputView.printProfit(returnRate);
     }
