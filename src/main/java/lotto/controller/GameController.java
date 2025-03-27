@@ -9,6 +9,7 @@ import lotto.view.OutputView;
 
 import java.util.List;
 
+import static lotto.domain.constants.ErrorConstants.EXCLUSIVE_ERROR;
 import static lotto.domain.constants.LottoConstants.LOTTO_PRICE;
 
 public class GameController {
@@ -33,25 +34,21 @@ public class GameController {
             processGame();
         } catch (IllegalArgumentException e) {
             outputView.printError(e.getMessage());
-            startGame(); // 재시도
+            startGame();
         } catch (Exception e) {
-            outputView.printError("예상치 못한 오류가 발생했습니다: " + e.getMessage());
+            outputView.printError(EXCLUSIVE_ERROR + e.getMessage());
         }
     }
 
-    // 테스트 가능한 핵심 로직 - 예외를 던짐
     public void processGame() {
-        // 1. 로또 구매
         int price = inputView.readAmount();
         int count = price / LOTTO_PRICE;
         List<Lotto> tickets = lottoService.generateLottos(count);
         outputView.printLottoTickets(tickets, count);
 
-        // 2. 당첨 번호 입력
         List<Integer> winningNumbers = inputView.readWinningNumbers();
         int bonusNumber = inputView.readBonusNumber(winningNumbers);
 
-        // 3. 결과 계산 및 출력
         LottoResult result = lottoService.calculateResult(tickets, winningNumbers, bonusNumber);
         double returnRate = resultService.calculateReturnRate(result, price);
 
