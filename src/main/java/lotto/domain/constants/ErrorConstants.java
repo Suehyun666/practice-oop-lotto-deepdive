@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.domain.constants;
 
 public class ErrorConstants {
     public static final String INSTANCE_ERROR = "유틸리티 클래스는 인스턴스화할 수 없습니다.";

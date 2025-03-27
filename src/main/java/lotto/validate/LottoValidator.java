@@ -1,11 +1,8 @@
-package lotto.util.validate;
+package lotto.validate;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static lotto.constants.ErrorConstants.*;
-import static lotto.constants.LottoConstants.*;
 
 public class LottoValidator {
 

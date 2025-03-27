@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.domain.constants;
 
 public class OutPutConstants {
     public static final String OUTPUT_STATIC_START = "\"\\n당첨 통계\\n---\"";

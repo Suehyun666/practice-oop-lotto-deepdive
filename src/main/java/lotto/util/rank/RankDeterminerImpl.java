@@ -1,18 +1,11 @@
-package lotto.util;
+package lotto.util.rank;
 
-import lotto.constants.LottoRank;
-
+import lotto.domain.constants.LottoRank;
 import java.util.Arrays;
 
-import static lotto.constants.ErrorConstants.INSTANCE_ERROR;
+public class RankDeterminerImpl implements RankDeterminer{
 
-public class RankDeterminer {
-
-    private RankDeterminer() {
-        throw new AssertionError(INSTANCE_ERROR);
-    }
-
-    public static LottoRank determineRank(int matchCount, boolean bonusMatch) {
+    public LottoRank determineRank(int matchCount, boolean bonusMatch) {
         if (matchCount == 5 && bonusMatch) {
             return LottoRank.SECOND;
         }

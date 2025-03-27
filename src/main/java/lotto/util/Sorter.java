@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.constants.ErrorConstants.INSTANCE_ERROR;
+import static lotto.domain.constants.ErrorConstants.INSTANCE_ERROR;
 
 public class Sorter {
 

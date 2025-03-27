@@ -1,17 +1,11 @@
 package lotto.util;
 
-import lotto.constants.LottoRank;
-import lotto.model.LottoResult;
+import lotto.domain.constants.LottoRank;
+import lotto.domain.LottoResult;
 
-import static lotto.constants.ErrorConstants.INSTANCE_ERROR;
-
-public class LottoStatisticsCalculator {
-
-    private LottoStatisticsCalculator() {
-        throw new AssertionError(INSTANCE_ERROR);
-    }
-
-    public static long calculateTotalPrize(LottoResult result) {
+public class StatisticsCalculatorImpl implements StatisticsCalculator {
+    @Override
+    public long calculateTotalPrize(LottoResult result) {
         long totalPrize = 0;
         for (LottoRank rank : LottoRank.values()) {
             if (rank != LottoRank.NONE) {
@@ -21,7 +15,8 @@ public class LottoStatisticsCalculator {
         return totalPrize;
     }
 
-    public static double calculateReturnRate(LottoResult result, int purchaseAmount) {
+    @Override
+    public double calculateReturnRate(LottoResult result, int purchaseAmount) {
         if (purchaseAmount == 0) {
             return 0.0;
         }

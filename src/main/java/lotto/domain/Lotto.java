@@ -1,7 +1,7 @@
-package lotto.model;
+package lotto.domain;
 
 import lotto.util.Sorter;
-import lotto.util.validate.LottoValidator;
+import lotto.validate.LottoValidator;
 
 import java.util.ArrayList;
 import java.util.List;

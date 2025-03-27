@@ -1,12 +1,10 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.util.validate.LottoValidator;
-import lotto.util.validate.TicketValidator;
+import lotto.validate.LottoValidator;
+import lotto.validate.TicketValidator;
 
 import java.util.List;
-
-import static lotto.constants.InputConstants.*;
 
 public class ConsoleInputView implements InputView {
     @Override

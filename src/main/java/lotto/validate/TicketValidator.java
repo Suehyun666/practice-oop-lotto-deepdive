@@ -1,8 +1,7 @@
-package lotto.util.validate;
+package lotto.validate;
 
-import static lotto.constants.ErrorConstants.*;
-import static lotto.constants.LottoConstants.LOTTO_LIMIT_PRICE;
-import static lotto.constants.LottoConstants.LOTTO_PRICE;
+import static lotto.domain.constants.LottoConstants.LOTTO_LIMIT_PRICE;
+import static lotto.domain.constants.LottoConstants.LOTTO_PRICE;
 
 public class TicketValidator {
 

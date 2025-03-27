@@ -1,6 +1,6 @@
-package lotto.model;
+package lotto.domain;
 
-import lotto.constants.LottoRank;
+import lotto.domain.constants.LottoRank;
 import java.util.EnumMap;
 import java.util.Map;
 

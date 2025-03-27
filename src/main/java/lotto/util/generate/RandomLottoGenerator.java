@@ -1,12 +1,10 @@
 package lotto.util.generate;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.model.Lotto;
+import lotto.domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.constants.LottoConstants.*;
 
 public class RandomLottoGenerator implements LottoGenerator {
     @Override

@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.domain.constants;
 
 public class InputConstants {
     public static final String INPUT_BONUS = "\n보너스 번호를 입력해 주세요.";

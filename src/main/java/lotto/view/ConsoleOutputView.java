@@ -1,13 +1,11 @@
 package lotto.view;
 
-import lotto.constants.LottoRank;
-import lotto.model.Lotto;
-import lotto.model.LottoResult;
+import lotto.domain.constants.LottoRank;
+import lotto.domain.Lotto;
+import lotto.domain.LottoResult;
 
 import java.text.DecimalFormat;
 import java.util.List;
-
-import static lotto.constants.OutPutConstants.*;
 
 public class ConsoleOutputView implements OutputView {
 

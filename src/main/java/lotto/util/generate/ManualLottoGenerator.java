@@ -1,8 +1,8 @@
 package lotto.util.generate;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.model.Lotto;
-import lotto.util.validate.LottoValidator;
+import lotto.domain.Lotto;
+import lotto.validate.LottoValidator;
 import java.util.ArrayList;
 import java.util.List;
 
