@@ -11,21 +11,22 @@ public class TicketValidator {
     }
 
     public static int validate(String input) {
+        int price;
         try {
-            int price = Integer.parseInt(input);
-            if (price > LOTTO_LIMIT_PRICE) {
-                throw new IllegalArgumentException(PRICE_MAX_ERROR);
-            }
-            if (price < LOTTO_PRICE) {
-                throw new IllegalArgumentException(PRICE_MIN_ERROR);
-            }
-            if (price % LOTTO_PRICE != 0) {
-                throw new IllegalArgumentException(PRICE_UNIT_ERROR);
-            }
-            return price;
+            price = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(PRICE_TYPE_ERROR);
         }
+        if (price > LOTTO_LIMIT_PRICE) {
+            throw new IllegalArgumentException(PRICE_MAX_ERROR);
+        }
+        if (price < LOTTO_PRICE) {
+            throw new IllegalArgumentException(PRICE_MIN_ERROR);
+        }
+        if (price % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException(PRICE_UNIT_ERROR);
+        }
+        return price;
     }
 
 }
