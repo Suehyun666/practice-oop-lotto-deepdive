@@ -8,9 +8,11 @@ import lotto.model.Lotto;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static lotto.constants.OutPutConstants.*;
+
 public class OutputView {
     public void printLottoTickets(List<Lotto> tickets, int count) {
-        System.out.println("\n" + count + "개를 구매했습니다.");
+        System.out.println(LOTTO_COUNT_MESSAGE1 + count + LOTTO_COUNT_MESSAGE2);
         List<Lotto> sortedTickets = Sorter.sort(tickets);
         for (Lotto ticket : sortedTickets) {
             System.out.println(ticket.getNumbers());
@@ -18,7 +20,7 @@ public class OutputView {
     }
 
     public void printResult(LottoResult result, int amount) {
-        System.out.println("\n당첨 통계\n---");
+        System.out.println(OUTPUT_STATIC_START);
         printRankCount(result, LottoRank.FIFTH);
         printRankCount(result, LottoRank.FOURTH);
         printRankCount(result, LottoRank.THIRD);
@@ -26,30 +28,30 @@ public class OutputView {
         printRankCount(result, LottoRank.FIRST);
 
         double returnRate = result.calculateReturnRate(amount);
-        System.out.println("총 수익률은 " + formatRate(returnRate) + "%입니다.");
+        System.out.println(PROFIT_MESSAGE_1 + formatRate(returnRate) + PROFIT_MESSAGE_2);
     }
 
     private void printRankCount(LottoResult result, LottoRank rank) {
         StringBuilder sb = new StringBuilder();
-        sb.append(rank.getMatchCount()).append("개 일치");
+        sb.append(rank.getMatchCount()).append(CORRECT_COUNT);
 
         if (rank == LottoRank.SECOND) {
-            sb.append(", 보너스 볼 일치");
+            sb.append(BONUS_COUNT);
         }
 
-        sb.append(" (").append(formatMoney(rank.getPrize())).append(") - ")
-                .append(result.getCount(rank)).append("개");
+        sb.append(Money_FORMAT1).append(formatMoney(rank.getPrize())).append(Money_FORMAT2)
+                .append(result.getCount(rank)).append(COUNT);
 
         System.out.println(sb.toString());
     }
 
     private String formatMoney(int prize) {
-        DecimalFormat formatter = new DecimalFormat("###,###");
-        return formatter.format(prize) + "원";
+        DecimalFormat formatter = new DecimalFormat(PRICE_FORMAT);
+        return formatter.format(prize) + WON;
     }
 
     private String formatRate(double rate) {
-        DecimalFormat formatter = new DecimalFormat("0.0");
+        DecimalFormat formatter = new DecimalFormat(PROFIT_FORMAT);
         return formatter.format(rate);
     }
 

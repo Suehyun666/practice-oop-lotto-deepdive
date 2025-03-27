@@ -6,12 +6,13 @@ import lotto.model.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.constants.ErrorConstants.INSTANCE_ERROR;
 import static lotto.constants.LottoConstants.*;
 
 public class LottoGenerator {
 
     private LottoGenerator() {
-        throw new AssertionError("유틸리티 클래스는 인스턴스화할 수 없습니다.");
+        throw new AssertionError(INSTANCE_ERROR);
     }
 
     public static List<Lotto> generate(int count) {
