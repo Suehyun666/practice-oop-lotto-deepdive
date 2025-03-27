@@ -1,4 +1,4 @@
-package lotto.view.error;
+package lotto.util.validate;
 
 import static lotto.constants.ErrorConstants.*;
 import static lotto.constants.LottoConstants.LOTTO_LIMIT_PRICE;

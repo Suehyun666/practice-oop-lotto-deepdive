@@ -1,4 +1,4 @@
-package lotto.view.error;
+package lotto.util.validate;
 
 import java.util.Arrays;
 import java.util.List;

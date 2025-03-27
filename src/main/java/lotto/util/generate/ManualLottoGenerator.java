@@ -2,7 +2,7 @@ package lotto.util.generate;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.model.Lotto;
-import lotto.view.error.LottoValidator;
+import lotto.util.validate.LottoValidator;
 import java.util.ArrayList;
 import java.util.List;
 
