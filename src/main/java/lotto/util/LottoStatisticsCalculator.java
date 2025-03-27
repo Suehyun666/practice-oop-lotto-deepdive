@@ -6,6 +6,7 @@ import lotto.model.LottoResult;
 import static lotto.constants.ErrorConstants.INSTANCE_ERROR;
 
 public class LottoStatisticsCalculator {
+
     private LottoStatisticsCalculator() {
         throw new AssertionError(INSTANCE_ERROR);
     }

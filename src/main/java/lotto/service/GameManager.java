@@ -1,7 +1,6 @@
 package lotto.service;
 
 import lotto.util.LottoStatisticsCalculator;
-import lotto.util.ResultCalculator;
 import lotto.model.Lotto;
 import lotto.view.InputView;
 import lotto.model.LottoResult;
