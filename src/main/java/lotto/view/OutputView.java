@@ -13,8 +13,7 @@ import static lotto.constants.OutPutConstants.*;
 public class OutputView {
     public void printLottoTickets(List<Lotto> tickets, int count) {
         System.out.println(LOTTO_COUNT_MESSAGE1 + count + LOTTO_COUNT_MESSAGE2);
-        List<Lotto> sortedTickets = Sorter.sort(tickets);
-        for (Lotto ticket : sortedTickets) {
+        for (Lotto ticket : tickets) {
             System.out.println(ticket.getNumbers());
         }
     }

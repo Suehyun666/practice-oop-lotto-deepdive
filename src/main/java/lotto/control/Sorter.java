@@ -15,13 +15,9 @@ public class Sorter {
         throw new AssertionError(INSTANCE_ERROR);
     }
 
-    public static List<Lotto> sort(List<Lotto> tickets) {
-        return tickets.stream()
-                .map(ticket -> {
-                    List<Integer> sortedNumbers = new ArrayList<>(ticket.getNumbers());
-                    Collections.sort(sortedNumbers);
-                    return new Lotto(sortedNumbers);
-                })
-                .collect(Collectors.toList());
+    public static List<Integer> sort(List<Integer> numbers) {
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
     }
 }

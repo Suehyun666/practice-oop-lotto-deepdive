@@ -1,5 +1,6 @@
 package lotto.model;
 
+import lotto.control.Sorter;
 import lotto.view.error.LottoValidator;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         LottoValidator.validate(numbers);
-        this.numbers = numbers;
+        this.numbers = Sorter.sort(numbers);
     }
 
     public List<Integer> getNumbers() {
