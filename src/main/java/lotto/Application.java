@@ -6,6 +6,8 @@ import lotto.util.generate.RandomLottoGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import static lotto.constants.ErrorConstants.ERROR;
+
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -16,7 +18,7 @@ public class Application {
         try {
             gameManager.startGame();
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println(ERROR + e.getMessage());
         }
     }
 }
