@@ -1,6 +1,6 @@
 package lotto.model;
 
-import lotto.control.Sorter;
+import lotto.util.Sorter;
 import lotto.view.error.LottoValidator;
 
 import java.util.ArrayList;

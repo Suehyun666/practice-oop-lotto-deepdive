@@ -1,7 +1,8 @@
-package lotto.control;
+package lotto.util;
 
 import lotto.constants.LottoRank;
 import lotto.model.Lotto;
+import lotto.model.LottoResult;
 
 import java.util.List;
 

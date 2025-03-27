@@ -1,8 +1,7 @@
 package lotto.view;
 
-import lotto.control.LottoResult;
+import lotto.model.LottoResult;
 import lotto.constants.LottoRank;
-import lotto.control.Sorter;
 import lotto.model.Lotto;
 
 import java.text.DecimalFormat;

@@ -1,11 +1,8 @@
-package lotto.control;
-
-import lotto.model.Lotto;
+package lotto.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static lotto.constants.ErrorConstants.INSTANCE_ERROR;
 

@@ -1,4 +1,4 @@
-package lotto.control;
+package lotto.model;
 
 import lotto.constants.LottoRank;
 import java.util.EnumMap;
