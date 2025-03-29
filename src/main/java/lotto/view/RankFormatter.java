@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.view;
 
 import lotto.constants.LottoRank;
 import lotto.model.LottoResult;
