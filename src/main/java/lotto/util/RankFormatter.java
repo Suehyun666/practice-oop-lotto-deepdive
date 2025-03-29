@@ -16,9 +16,11 @@ public class RankFormatter {
 
     public static String formatRankResult(LottoResult result, LottoRank rank) {
         StringBuilder sb = new StringBuilder();
+        sb.append(rank.getRank()).append(": ");
         sb.append(rank.getMatchCount()).append(CORRECT_COUNT);
 
         if (rank == LottoRank.SECOND) {
+
             sb.append(BONUS_COUNT);
         }
 
