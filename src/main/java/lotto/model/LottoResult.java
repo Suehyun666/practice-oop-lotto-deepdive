@@ -3,6 +3,8 @@ package lotto.model;
 import lotto.constants.LottoRank;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class LottoResult {
     private final Map<LottoRank, Integer> rankCounts;
@@ -24,11 +26,17 @@ public class LottoResult {
     }
 
     private void initializeRankCounts() {
-        for (LottoRank rank : LottoRank.values()) {
-            if (rank != LottoRank.NONE) {
-                rankCounts.put(rank, 0);
-            }
-        }
+        getValidRanks().forEach(rank -> rankCounts.put(rank, 0));
+    }
+
+    private java.util.List<LottoRank> getValidRanks() {
+        return Arrays.stream(LottoRank.values())
+                .filter(this::isValidRank)
+                .collect(Collectors.toList());
+    }
+
+    private boolean isValidRank(LottoRank rank) {
+        return rank != LottoRank.NONE;
     }
 
 }
