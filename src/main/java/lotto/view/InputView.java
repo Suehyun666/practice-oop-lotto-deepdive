@@ -5,7 +5,7 @@ import lotto.util.validate.LottoValidator;
 import lotto.util.validate.TicketValidator;
 import java.util.List;
 
-import static lotto.constants.InputConstants.*;
+import static lotto.constants.ViewConstants.*;
 
 public class InputView {
 
