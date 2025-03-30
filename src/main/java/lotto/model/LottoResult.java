@@ -1,9 +1,11 @@
 package lotto.model;
 
 import lotto.constants.LottoRank;
+
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Arrays;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 public class LottoResult {
@@ -15,14 +17,25 @@ public class LottoResult {
     }
 
     public void addRank(LottoRank rank) {
-        if (rank == LottoRank.NONE) {
-            return;
+        if (rankCounts.containsKey(rank)) {
+            rankCounts.put(rank, rankCounts.get(rank) + 1);
         }
-        rankCounts.put(rank, rankCounts.get(rank) + 1);
     }
 
     public int getCount(LottoRank rank) {
         return rankCounts.getOrDefault(rank, 0);
+    }
+
+    public long calculateTotalPrize() {
+        return rankCounts.entrySet().stream()
+                .mapToLong(entry -> (long) entry.getKey().getPrize() * entry.getValue())
+                .sum();
+    }
+    public double calculateReturnRate(int purchaseAmount) {
+        if (purchaseAmount == 0) {
+            return 0.0;
+        }
+        return (double) calculateTotalPrize() / purchaseAmount * 100;
     }
 
     private void initializeRankCounts() {
@@ -38,5 +51,4 @@ public class LottoResult {
     private boolean isValidRank(LottoRank rank) {
         return rank != LottoRank.NONE;
     }
-
 }
