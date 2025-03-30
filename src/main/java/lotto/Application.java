@@ -1,21 +1,28 @@
 package lotto;
 
-import lotto.service.GameManager;
-import lotto.util.generate.LottoGenerator;
-import lotto.util.generate.RandomLottoGenerator;
+import lotto.controller.LottoGameController;
+import lotto.service.*;
 import lotto.view.ConsoleView;
 
-import static lotto.constants.ErrorConstants.ERROR;
 
 public class Application {
     public static void main(String[] args) {
-        ConsoleView view = new ConsoleView();
         LottoGenerator lottoGenerator = new RandomLottoGenerator();
-        GameManager gameManager = new GameManager(view, lottoGenerator);
-        try {
-            gameManager.startGame();
-        } catch (IllegalArgumentException e) {
-            System.out.println(ERROR + e.getMessage());
-        }
+        LottoService lottoService = new LottoService(lottoGenerator);
+        WinningNumbersService winningNumbersService = new WinningNumbersService();
+        ResultService resultService = new ResultService();
+
+        LottoGameFacade gameFacade = new LottoGameFacade(
+                lottoService,
+                winningNumbersService,
+                resultService);
+
+        ConsoleView consoleView = new ConsoleView();
+
+        LottoGameController controller = new LottoGameController(
+                consoleView,
+                gameFacade);
+
+        controller.start();
     }
 }
