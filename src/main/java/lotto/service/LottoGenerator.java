@@ -1,4 +1,4 @@
-package lotto.util.generate;
+package lotto.service;
 import lotto.model.Lotto;
 import java.util.List;
 
