@@ -1,31 +1,52 @@
 package lotto.model;
 
-import lotto.util.Sorter;
-import lotto.util.validate.LottoValidator;
-
-import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static lotto.constants.ErrorMessage.*;
+import static lotto.constants.LottoConstants.LOTTO_SIZE;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> numbers) {
-        LottoValidator.validate(numbers);
-        this.numbers = Sorter.sort(numbers);
+        validateSize(numbers);
+        validateDuplicate(numbers);
+
+        this.numbers = numbers.stream()
+                .map(LottoNumber::of)
+                .sorted(Comparator.comparing(LottoNumber::getValue))
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+        return numbers.stream()
+                .map(LottoNumber::getValue)
+                .collect(Collectors.toList());
     }
 
     public int matchCount(Lotto other) {
-        return (int) numbers.stream()
-                .filter(other.numbers::contains)
+        return (int) this.numbers.stream()
+                .filter(number -> other.contains(number.getValue()))
                 .count();
     }
 
-    public boolean contains(int bonusnumber) {
-        return numbers.contains(bonusnumber);
+    public boolean contains(int number) {
+        return numbers.stream()
+                .anyMatch(lottoNumber -> lottoNumber.getValue() == number);
     }
 
+    private void validateSize(List<Integer> numbers) {
+        if (numbers == null || numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(WINNING_COUNT_ERROR.getMessage());
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        if (new HashSet<>(numbers).size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(WINNING_DUPLICATE_ERROR.getMessage());
+        }
+    }
 }
