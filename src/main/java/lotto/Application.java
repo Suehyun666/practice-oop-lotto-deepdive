@@ -3,18 +3,15 @@ package lotto;
 import lotto.service.GameManager;
 import lotto.util.generate.LottoGenerator;
 import lotto.util.generate.RandomLottoGenerator;
-import lotto.view.InputView;
-import lotto.view.OutputView;
+import lotto.view.ConsoleView;
 
 import static lotto.constants.ErrorConstants.ERROR;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
+        ConsoleView view = new ConsoleView();
         LottoGenerator lottoGenerator = new RandomLottoGenerator();
-        GameManager gameManager = new GameManager(inputView, outputView, lottoGenerator);
-
+        GameManager gameManager = new GameManager(view, lottoGenerator);
         try {
             gameManager.startGame();
         } catch (IllegalArgumentException e) {

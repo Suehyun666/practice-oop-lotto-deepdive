@@ -2,10 +2,9 @@ package lotto.service;
 
 import lotto.util.LottoStatisticsCalculator;
 import lotto.model.Lotto;
-import lotto.view.InputView;
 import lotto.model.LottoResult;
-import lotto.view.OutputView;
 import lotto.util.generate.LottoGenerator;
+import lotto.view.ConsoleView;
 
 import java.util.List;
 
@@ -13,31 +12,29 @@ import static lotto.constants.LottoConstants.LOTTO_PRICE;
 
 public class GameManager {
 
-    private final InputView inputView;
-    private final OutputView outputView;
+    private final ConsoleView view;
     private final LottoGenerator lottoGenerator;
 
-    public GameManager(InputView inputView, OutputView outputView,LottoGenerator lottoGenerator) {
-        this.inputView = inputView;
-        this.outputView = outputView;
+    public GameManager(ConsoleView view,LottoGenerator lottoGenerator) {
+        this.view = view;
         this.lottoGenerator = lottoGenerator;
     }
 
     public void startGame() {
-        int price = inputView.readAmount();
+        int price = view.readAmount();
         int count = price / LOTTO_PRICE;
 
         List<Lotto> tickets = lottoGenerator.generate(count);
-        outputView.printLottoTickets(tickets, count);
+        view.printLottoTickets(tickets, count);
 
-        List<Integer> winningNumbers = inputView.readWinningNumbers();
-        int bonusNumber = inputView.readBonusNumber(winningNumbers);
+        List<Integer> winningNumbers = view.readWinningNumbers();
+        int bonusNumber = view.readBonusNumber(winningNumbers);
 
         LottoResult result = ResultCalculator.calculate(tickets, winningNumbers, bonusNumber);
-        outputView.printResult(result);
+        view.printResult(result);
 
         double returnRate = LottoStatisticsCalculator.calculateReturnRate(result, price);
-        outputView.printProfit(returnRate);
+        view.printProfit(returnRate);
     }
 
 }

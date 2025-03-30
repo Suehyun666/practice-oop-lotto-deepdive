@@ -1,15 +1,36 @@
 package lotto.view;
 
-import lotto.model.LottoResult;
+import camp.nextstep.edu.missionutils.Console;
 import lotto.constants.LottoRank;
 import lotto.model.Lotto;
+import lotto.model.LottoResult;
+import lotto.util.validate.LottoValidator;
+import lotto.util.validate.TicketValidator;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 import static lotto.constants.ViewConstants.*;
 
-public class OutputView {
+public class ConsoleView {
+    public int readAmount() {
+        System.out.println(INPUT_PRICE);
+        String price = Console.readLine();
+        return TicketValidator.validate(price);
+    }
+
+    public List<Integer> readWinningNumbers() {
+        System.out.println(INPUT_WINNINGNUMBER);
+        String input = Console.readLine();
+        return LottoValidator.validate(input);
+    }
+
+    public int readBonusNumber(List<Integer> winningnumbers) {
+        System.out.println(INPUT_BONUS);
+        String input = Console.readLine();
+        return LottoValidator.validateBonusNumber(winningnumbers,input);
+    }
+
     public void printLottoTickets(List<Lotto> tickets, int count) {
         System.out.println(LOTTO_COUNT_MESSAGE1 + count + LOTTO_COUNT_MESSAGE2);
         for (Lotto ticket : tickets) {
@@ -53,5 +74,4 @@ public class OutputView {
         DecimalFormat formatter = new DecimalFormat(PROFIT_FORMAT);
         return formatter.format(rate);
     }
-
 }
