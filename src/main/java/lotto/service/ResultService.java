@@ -12,7 +12,7 @@ public class ResultService {
         LottoResult result = new LottoResult();
         Lotto winningLotto = new Lotto(winningNumbers.getNumbers());
 
-        for (Lotto ticket : lottos.getNumbers()) {
+        for (Lotto ticket : lottos.getLottos()) {
             int matchCount = ticket.matchCount(winningLotto);
             boolean bonusMatch = ticket.contains(winningNumbers.getBonusNumber());
             LottoRank rank = LottoRank.from(matchCount, bonusMatch);
