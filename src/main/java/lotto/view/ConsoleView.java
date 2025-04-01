@@ -37,7 +37,7 @@ public class ConsoleView {
 
     public void printLottoTickets(LottosDTO tickets, int count) {
         System.out.println(count + LOTTO_COUNT_MESSAGE);
-        for (Lotto ticket : tickets.getNumbers()) {
+        for (Lotto ticket : tickets.getLottos()) {
             System.out.println(ticket.getNumbers());
         }
     }
