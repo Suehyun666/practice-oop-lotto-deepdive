@@ -18,6 +18,7 @@ public enum ErrorMessage {
     PRICE_MIN_ERROR("구입 금액은 최소 1,000원입니다."),
     PRICE_MAX_ERROR("구입 금액이 너무 큽니다."),
     PRICE_UNIT_ERROR("구입 금액은 1,000원 단위여야 합니다."),
+    PRICE_FORMAT("%,d원"),
 
     // 기타 에러
     INSTANCE_ERROR("유틸리티 클래스는 인스턴스화할 수 없습니다."),

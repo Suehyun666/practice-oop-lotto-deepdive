@@ -10,7 +10,7 @@ public class Money {
 
     private Money(int amount) {
         if (amount < 0) {
-            throw new IllegalArgumentException("금액은 0원 이상이어야 합니다.");
+            throw new IllegalArgumentException(PRICE_MIN_ERROR.getMessage());
         }
         this.amount = amount;
     }
@@ -65,6 +65,6 @@ public class Money {
 
     @Override
     public String toString() {
-        return String.format("%,d원", amount);
+        return String.format(PRICE_FORMAT.getMessage(), amount);
     }
 }

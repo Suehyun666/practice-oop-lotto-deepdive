@@ -1,5 +1,6 @@
 package lotto.constants;
 
+// LottoRank.java에 toString() 메서드 추가
 public enum LottoRank {
     FIRST(1, 6, false, 2_000_000_000),
     SECOND(2, 5, true, 30_000_000),
@@ -12,6 +13,11 @@ public enum LottoRank {
     private final int matchCount;
     private final boolean bonusMatch;
     private final int prize;
+
+    private static final String CORRECT_COUNT = "개 일치";
+    private static final String BONUS_MATCH = ", 보너스 볼 일치";
+    private static final String PRICE_FORMAT = "#,###";
+    private static final String WON = "원";
 
     LottoRank(int rank, int matchCount, boolean bonusMatch, int prize) {
         this.rank = rank;
@@ -39,5 +45,22 @@ public enum LottoRank {
 
     public boolean isBonusMatch() {
         return bonusMatch;
+    }
+
+    @Override
+    public String toString() {
+        String bonusMatchText = bonusMatch ? BONUS_MATCH : "";
+        String formattedPrize = formatMoney(prize);
+
+        return String.format("%d%s%s(%s)",
+                matchCount,
+                CORRECT_COUNT,
+                bonusMatchText,
+                formattedPrize);
+    }
+
+    private String formatMoney(int prize) {
+        java.text.DecimalFormat formatter = new java.text.DecimalFormat(PRICE_FORMAT);
+        return formatter.format(prize) + WON;
     }
 }
