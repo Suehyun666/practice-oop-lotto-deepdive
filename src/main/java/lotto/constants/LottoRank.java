@@ -2,7 +2,7 @@ package lotto.constants;
 
 // LottoRank.java에 toString() 메서드 추가
 public enum LottoRank {
-    FIRST(1, 6, false, 2_000_000_000),
+    FIRST(1, 6, false, 200_000_000),
     SECOND(2, 5, true, 30_000_000),
     THIRD(3, 5, false, 1_500_000),
     FOURTH(4, 4, false, 50_000),
