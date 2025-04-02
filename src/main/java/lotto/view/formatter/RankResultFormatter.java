@@ -18,7 +18,7 @@ public class RankResultFormatter implements Formatter {
         }
         LottoRank rank = (LottoRank) value;
         String bonusMatchText = rank.isBonusMatch() ? ", 보너스 볼 일치" : "";
-        return String.format("%d개 일치%s(%s)",
+        return String.format("%d개 일치%s (%s)",
                 rank.getMatchCount(),
                 bonusMatchText,
                 moneyFormatter.format(rank.getPrize()));

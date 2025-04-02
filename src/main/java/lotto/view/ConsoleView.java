@@ -56,10 +56,11 @@ public class ConsoleView implements View {
     public void printResult(LottoResult result) {
         System.out.println(OUTPUT_STATIC_START);
 
-        for (LottoRank rank : LottoRank.values()) {
-            if (rank != LottoRank.NONE) {
-                printRankResult(result, rank);
-            }
+        LottoRank[] ranks = {LottoRank.FIFTH, LottoRank.FOURTH, LottoRank.THIRD,
+                LottoRank.SECOND, LottoRank.FIRST};
+
+        for (LottoRank rank : ranks) {
+            printRankResult(result, rank);
         }
     }
 

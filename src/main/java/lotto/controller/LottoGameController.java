@@ -20,7 +20,7 @@ public class LottoGameController {
         try {
             String purchaseAmount = view.readAmount();
             LottosDTO lottos = gameFacade.purchaseAndGenerateLottos(purchaseAmount);
-            Ticket ticket = new Ticket(purchaseAmount); // 로또 개수 표시용
+            Ticket ticket = new Ticket(purchaseAmount);
             view.printLottoTickets(lottos, ticket.getAmount());
 
             String winningNumbersInput = view.readWinningNumbers();

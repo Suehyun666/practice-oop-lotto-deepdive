@@ -20,7 +20,4 @@ public class Ticket {
         return price.getAmount();
     }
 
-    public Money getMoney() {
-        return price;
-    }
 }
