@@ -4,6 +4,7 @@ import lotto.controller.LottoGameController;
 import lotto.service.*;
 import lotto.view.ConsoleView;
 import lotto.view.View;
+import lotto.view.formatter.*;
 
 
 public class Application {
@@ -18,7 +19,12 @@ public class Application {
                 winningNumbersService,
                 resultService);
 
-        View view = new ConsoleView();
+        Formatter moneyFormatter = new MoneyFormatter();
+        Formatter rateFormatter = new RateFormatter();
+        Formatter rankFormatter = new RankResultFormatter(moneyFormatter);
+
+        View view = new ConsoleView(rateFormatter, rankFormatter);
+
 
         LottoGameController controller = new LottoGameController(
                 view,

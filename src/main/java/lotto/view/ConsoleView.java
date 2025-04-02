@@ -5,8 +5,7 @@ import lotto.constants.LottoRank;
 import lotto.dto.LottosDTO;
 import lotto.model.Lotto;
 import lotto.model.LottoResult;
-
-import java.text.DecimalFormat;
+import lotto.view.formatter.Formatter;
 
 public class ConsoleView implements View {
 
@@ -16,25 +15,35 @@ public class ConsoleView implements View {
     private static final String LOTTO_COUNT_MESSAGE = "개를 구매했습니다.";
     private static final String OUTPUT_STATIC_START = "당첨 통계\n---";
     private static final String RANK_FORMAT = "%s - %d개";
-    private static final String PROFIT_FORMAT = "0.0";
-    private static final String PROFIT_MESSAGE = "총 수익률은 %s%%입니다.";
+    private static final String PROFIT_MESSAGE = "총 수익률은 %s입니다.";
     private static final String ERROR_PREFIX = "[ERROR] ";
+
+    private final Formatter rateFormatter;
+    private final Formatter rankFormatter;
+
+    public ConsoleView(Formatter rateFormatter, Formatter rankFormatter) {
+        this.rateFormatter = rateFormatter;
+        this.rankFormatter = rankFormatter;
+    }
 
     @Override
     public String readAmount() {
         System.out.println(INPUT_PRICE);
         return Console.readLine();
     }
+
     @Override
     public String readWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBER);
         return Console.readLine();
     }
+
     @Override
     public String readBonusNumber() {
         System.out.println(INPUT_BONUS);
         return Console.readLine();
     }
+
     @Override
     public void printLottoTickets(LottosDTO tickets, int count) {
         System.out.println(count + LOTTO_COUNT_MESSAGE);
@@ -42,6 +51,7 @@ public class ConsoleView implements View {
             System.out.println(ticket.getNumbers());
         }
     }
+
     @Override
     public void printResult(LottoResult result) {
         System.out.println(OUTPUT_STATIC_START);
@@ -52,24 +62,22 @@ public class ConsoleView implements View {
             }
         }
     }
+
     private void printRankResult(LottoResult result, LottoRank rank) {
         String resultText = String.format(
                 RANK_FORMAT,
-                rank.toString(),
+                rankFormatter.format(rank),
                 result.getCount(rank)
         );
 
         System.out.println(resultText);
     }
+
     @Override
     public void printProfit(double returnRate) {
-        System.out.println(String.format(PROFIT_MESSAGE, formatRate(returnRate)));
+        System.out.println(String.format(PROFIT_MESSAGE, rateFormatter.format(returnRate)));
     }
 
-    private String formatRate(double rate) {
-        DecimalFormat formatter = new DecimalFormat(PROFIT_FORMAT);
-        return formatter.format(rate);
-    }
     @Override
     public void printError(String message) {
         System.out.println(ERROR_PREFIX + message);
