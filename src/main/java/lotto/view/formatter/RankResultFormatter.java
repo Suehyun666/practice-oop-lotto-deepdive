@@ -2,6 +2,8 @@ package lotto.view.formatter;
 
 import lotto.constants.LottoRank;
 
+import static lotto.constants.ErrorMessage.LOTTO_INSTANCE_ERROR;
+
 public class RankResultFormatter implements Formatter {
     private final Formatter moneyFormatter;
 
@@ -12,7 +14,7 @@ public class RankResultFormatter implements Formatter {
     @Override
     public String format(Object value) {
         if (!(value instanceof LottoRank)) {
-            throw new IllegalArgumentException("로또 등수 객체가 필요합니다.");
+            throw new IllegalArgumentException(LOTTO_INSTANCE_ERROR.getMessage());
         }
         LottoRank rank = (LottoRank) value;
         String bonusMatchText = rank.isBonusMatch() ? ", 보너스 볼 일치" : "";
