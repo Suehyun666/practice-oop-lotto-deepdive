@@ -1,10 +1,10 @@
 package lotto.controller;
 
 import lotto.dto.LottosDTO;
+import lotto.model.GameResult;
 import lotto.model.Ticket;
 import lotto.model.WinningNumbers;
 import lotto.service.LottoGameFacade;
-import lotto.service.LottoGameFacade.GameResult;
 import lotto.view.View;
 
 public class LottoGameController {

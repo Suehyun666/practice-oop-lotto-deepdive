@@ -1,6 +1,7 @@
 package lotto.service;
 
 import lotto.dto.LottosDTO;
+import lotto.model.GameResult;
 import lotto.model.LottoResult;
 import lotto.model.Ticket;
 import lotto.model.WinningNumbers;
@@ -32,23 +33,5 @@ public class LottoGameFacade {
         LottoResult lottoResult = resultService.calculateResult(lottos, winningNumbers);
         double returnRate = lottoResult.calculateReturnRate(purchaseAmount);
         return new GameResult(lottoResult, returnRate);
-    }
-
-    public static class GameResult {
-        private final LottoResult lottoResult;
-        private final double returnRate;
-
-        public GameResult(LottoResult lottoResult, double returnRate) {
-            this.lottoResult = lottoResult;
-            this.returnRate = returnRate;
-        }
-
-        public LottoResult getLottoResult() {
-            return lottoResult;
-        }
-
-        public double getReturnRate() {
-            return returnRate;
-        }
     }
 }
