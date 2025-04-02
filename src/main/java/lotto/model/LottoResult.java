@@ -26,7 +26,7 @@ public class LottoResult {
         return rankCounts.getOrDefault(rank, 0);
     }
 
-    public long calculateTotalPrize() {
+    private long calculateTotalPrize() {
         return rankCounts.entrySet().stream()
                 .mapToLong(entry -> (long) entry.getKey().getPrize() * entry.getValue())
                 .sum();
