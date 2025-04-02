@@ -3,6 +3,7 @@ package lotto;
 import lotto.controller.LottoGameController;
 import lotto.service.*;
 import lotto.view.ConsoleView;
+import lotto.view.View;
 
 
 public class Application {
@@ -17,10 +18,10 @@ public class Application {
                 winningNumbersService,
                 resultService);
 
-        ConsoleView consoleView = new ConsoleView();
+        View view = new ConsoleView();
 
         LottoGameController controller = new LottoGameController(
-                consoleView,
+                view,
                 gameFacade);
 
         controller.start();

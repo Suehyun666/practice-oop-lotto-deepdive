@@ -5,13 +5,13 @@ import lotto.model.Ticket;
 import lotto.model.WinningNumbers;
 import lotto.service.LottoGameFacade;
 import lotto.service.LottoGameFacade.GameResult;
-import lotto.view.ConsoleView;
+import lotto.view.View;
 
 public class LottoGameController {
-    private final ConsoleView view;
+    private final View view;
     private final LottoGameFacade gameFacade;
 
-    public LottoGameController(ConsoleView view, LottoGameFacade gameFacade) {
+    public LottoGameController(View view, LottoGameFacade gameFacade) {
         this.view = view;
         this.gameFacade = gameFacade;
     }
